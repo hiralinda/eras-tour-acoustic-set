@@ -46,6 +46,9 @@ const SongTable: React.FC<SongTableProps> = ({ songs }) => {
             <th className="px-2 py-3 border-b-2 w-1/6 border-gray-300 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
               Title
             </th>
+            <th className="px-2 py-3 border-b-2 w-1/6 border-gray-300 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+              Video
+            </th>
             <th
               className="px-2 py-3 border-b-2 w-1/6 border-gray-300 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider cursor-pointer"
               onClick={() => toggleSort('datePerformed')}
@@ -61,23 +64,20 @@ const SongTable: React.FC<SongTableProps> = ({ songs }) => {
             <th className="px-2 py-3 border-b-2 w-1/6 border-gray-300 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
               Featured
             </th>
-            <th className="px-2 py-3 border-b-2 w-1/6 border-gray-300 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-              Video
-            </th>
           </tr>
         </thead>
         <tbody>
           {sortedSongs.map((song, index) => (
             <tr key={index} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
               <td className="px-2 py-3 whitespace-normal text-xs">{song.title}</td>
-              <td className="px-2 py-3 whitespace-nowrap text-xs">{song.datePerformed}</td>
-              <td className="px-2 py-3 whitespace-normal text-xs">{song.location}</td>
-              <td className="px-2 py-3 whitespace-nowrap text-xs">{song.featured}</td>
               <td className="px-2 py-3 whitespace-nowrap text-xs">
                 <a href={song.videoLink} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
                   Watch
                 </a>
               </td>
+              <td className="px-2 py-3 whitespace-nowrap text-xs">{song.datePerformed}</td>
+              <td className="px-2 py-3 whitespace-normal text-xs">{song.location}</td>
+              <td className="px-2 py-3 whitespace-nowrap text-xs">{song.featured}</td>
             </tr>
           ))}
         </tbody>
