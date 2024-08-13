@@ -3,6 +3,8 @@
 import React, { useState, useMemo, useEffect } from 'react'
 import { ChevronDownIcon, ChevronUpIcon, MagnifyingGlassIcon, MoonIcon } from '@heroicons/react/24/solid'
 
+
+
 interface Song {
   title: string;
   datePerformed: string;
@@ -21,21 +23,25 @@ const SongTable: React.FC<SongTableProps> = ({ songs }) => {
   const [sortField, setSortField] = useState<SortField>('datePerformed')
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc')
   const [searchTerm, setSearchTerm] = useState('')
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(true)
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme')
     if (savedTheme) {
       setIsDarkMode(savedTheme === 'dark')
-      document.documentElement.classList.toggle('dark', savedTheme === 'dark')
+    } else {
+      // Set dark mode as default if no theme is saved
+      setIsDarkMode(true)
+      localStorage.setItem('theme', 'dark')
     }
+    document.documentElement.classList.toggle('dark', savedTheme === 'dark' || savedTheme === null)
   }, [])
-
+  
   useEffect(() => {
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light')
     document.documentElement.classList.toggle('dark', isDarkMode)
   }, [isDarkMode])
-
+  
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode)
   }
