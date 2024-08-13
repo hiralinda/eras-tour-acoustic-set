@@ -1,4 +1,4 @@
-# Song List Viewer
+# Eras Tour Acoustic Set
 
 [Live Page](https://eras-tour-acoustic-set.vercel.app/)
 

@@ -16,6 +16,7 @@ export default function Home() {
     <div className="container mx-auto py-0 my-10">
       <h1 className="text-3xl font-bold text-center my-8 cedarville-cursive-regular">Every song performed on the acoustic set of Eras Tour</h1>
       <SongTable songs={songs} />
+      
     </div>
   )
 }
